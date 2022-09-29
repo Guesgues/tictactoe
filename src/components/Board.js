@@ -2,23 +2,20 @@ import "./Board.css";
 import Square from "./Square";
 
 function Board(props) {
+  const { winner, squares, onClick, onRestart } = props;
   return (
     <div>
       <h1>Tic Tac Toe</h1>
-      <div className="status">{props.winner}</div>
+      <div className="status">{winner}</div>
       <div className="board">
-        {props.squares.map((item, index) => {
+        {squares.map((item, index) => {
           return (
-            <Square
-              key={index}
-              value={item}
-              onClick={() => props.onClick(index)}
-            />
+            <Square key={index} value={item} onClick={() => onClick(index)} />
           );
         })}
       </div>
 
-      <button className="restart" onClick={props.onRestart}>
+      <button className="restart" onClick={onRestart}>
         Restart Game
       </button>
     </div>

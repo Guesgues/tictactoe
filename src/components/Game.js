@@ -18,13 +18,13 @@ function Game(props) {
   };
 
   const winner = useMemo(() => {
-    let turn;
-    if (calculateWinner(box)) {
-      return (turn = calculateWinner(box) + " is Winner!");
-    } else if (!calculateWinner(box) && box.includes("") === false) {
-      return (turn = "Drawn!!!");
+    const turn = calculateWinner(box);
+    if (turn) {
+      return turn + " is Winner!";
+    } else if (!turn && !box.includes("")) {
+      return "Drawn!!!";
     } else {
-      return (turn = (xIsNext ? "X" : "O") + " Play");
+      return (xIsNext ? "X" : "O") + " Play";
     }
   }, [xIsNext]);
 
